@@ -1,0 +1,24 @@
+<idea-plugin>
+    <id>dev.marc.storybook-runner</id>
+    <name>Storybook Story Runner</name>
+    <vendor>Marc</vendor>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.plugins.terminal</depends>
+    <depends>JavaScript</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup id="Storybook Runner" displayType="BALLOON" isLogByDefault="true"/>
+        <runLineMarkerContributor
+                language="TypeScript"
+                implementationClass="dev.marcnow.storybookrunner.StoryRunLineMarkerContributor"/>
+    </extensions>
+
+    <actions>
+        <action id="dev.marcnow.storybookrunner.runFromContext"
+                class="dev.marcnow.storybookrunner.RunStorybookFromContextAction"
+                text="Run Storybook">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
