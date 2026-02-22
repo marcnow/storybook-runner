@@ -1,5 +1,6 @@
 package dev.marcnow.storybookrunner
 
+import com.intellij.icons.AllIcons
 import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
@@ -8,7 +9,7 @@ import com.intellij.openapi.project.DumbAware
 import com.intellij.openapi.vfs.VfsUtilCore
 import com.intellij.openapi.vfs.VirtualFile
 
-class RunStorybookFromContextAction : AnAction(), DumbAware {
+class RunStorybookFromContextAction : AnAction("Run Storybook", null, AllIcons.Actions.Execute), DumbAware {
     override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.BGT
 
     override fun update(e: AnActionEvent) {
@@ -18,6 +19,7 @@ class RunStorybookFromContextAction : AnAction(), DumbAware {
 
         val visible = project != null && target != null && resolveGlob(project.baseDir, target) != null
         e.presentation.isEnabledAndVisible = visible
+        e.presentation.icon = AllIcons.Actions.Execute
         e.presentation.text = when {
             target == null -> "Run Storybook"
             target.isDirectory -> "Run Storybook for stories in folder"

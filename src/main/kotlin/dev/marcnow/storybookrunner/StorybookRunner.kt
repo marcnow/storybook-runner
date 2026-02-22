@@ -14,8 +14,8 @@ object StorybookRunner {
 
     private fun buildStorybookCommand(glob: String): String {
         return if (SystemInfo.isWindows) {
-            // Execute via cmd explicitly so the command works even when the IDE terminal uses PowerShell.
-            "cmd /d /s /c \"set \\\"STORYBOOK_STORY_GLOB=$glob\\\" && npm run storybook\""
+            val escapedGlob = glob.replace("'", "''")
+            "\$env:STORYBOOK_STORY_GLOB='$escapedGlob'; npm run storybook"
         } else {
             "env STORYBOOK_STORY_GLOB='$glob' npm run storybook"
         }

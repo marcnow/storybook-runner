@@ -71,6 +71,7 @@ When adding a new class, add one line here describing its responsibility.
 
 ## Coding Style
 
+- Prefer the simplest working solution first. Avoid complex automation when a small explicit step is enough.
 - Follow existing Kotlin style and keep functions small and explicit.
 - Prefer early returns and null-safe handling (`?: return`) in action handlers.
 - Keep user-facing action text concise and consistent with existing wording.
